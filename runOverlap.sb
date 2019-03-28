@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name runOverlap
+
+
+
+mkdir index
+
+samfile = ../result_mapped.sam
+infile = splitted.fa
+indexfile = index/IDX
+
+
+srun overlap -S $samfile -x $indexfile -f infile -c 180 -o virus_recruit.fa
+
+scontrol show job $SLURM_JOB_ID     ### write job information to output file

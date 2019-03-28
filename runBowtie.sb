@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH --job-name runBiwtie
+
+
+infile = splitted.fa
+bow_outfile = result.sam
+sam_outfile = result_mapped.sam
+
+srun bowtie2 -x ../index/IDX -f $infile --score-min L,0,-0.05 -t -p 4 -S $outfile
+srun samtools view -F 4 $outfile >$sam_outfile
+
+scontrol show job $SLURM_JOB_ID     ### write job information to output file

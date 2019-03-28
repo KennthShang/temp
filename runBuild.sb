@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name runBuild
+
+
+mkdir index
+
+infile = splitted.fa
+outfile = index/IDX
+
+
+srun build -f $infile -o $outfile
+
+scontrol show job $SLURM_JOB_ID     ### write job information to output file
