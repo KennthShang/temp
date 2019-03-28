@@ -1,6 +1,5 @@
 #!/bin/bash
 #$ -N run_build
-#$ -pe smp 6
 #$ -l h_vmem=6G
 
 
